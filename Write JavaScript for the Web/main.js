@@ -36,3 +36,37 @@ selectOption.addEventListener("change", (evt) => {
 	let option = evt.target.value;
 	musicResult.textContent = option;
 });
+
+// Input Validation
+
+const PASS_INPUT = document.getElementById("password-input");
+const SUBMIT_BTN = document.getElementById("submit-button");
+
+PASS_INPUT.addEventListener("input", (evt) => {
+	const PASS_LENGTH = evt.target.value.length;
+	if (PASS_LENGTH >= 6 && PASS_LENGTH <= 12) {
+		SUBMIT_BTN.removeAttribute("disabled");
+	} else {
+		SUBMIT_BTN.setAttribute("disabled", "true");
+	}
+});
+
+// confirm password
+
+const PASS_INPUT = document.getElementById("password-input");
+const CONFIRM_PASS = document.getElementById("confirm-password");
+const ERROR_MSG = document.getElementById("error-message");
+
+CONFIRM_PASS.addEventListener("blur", (evt) => {
+	if (PASS_INPUT.value === CONFIRM_PASS.value) {
+		console.log("it works !!!");
+        PASS_INPUT.style.border = "thin solid green";
+        CONFIRM_PASS.style.border = "thin solid green";
+        ERROR_MSG.style.display = "none";
+	} else {
+        console.log("doesn't work");
+        PASS_INPUT.style.border = "thin solid red";
+        CONFIRM_PASS.style.border = "thin solid red";
+        ERROR_MSG.style.display = "block";
+	}
+});
